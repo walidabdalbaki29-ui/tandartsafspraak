@@ -30,6 +30,8 @@
                         >
                             Dashboard
                         </a>
+                        @if (Auth::check())
+   
                     @else
                         <a
                             href="{{ route('login') }}"

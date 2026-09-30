@@ -29,6 +29,13 @@ class LoginController extends Controller
             'email' => 'de ingevoerde gegevens zijn onjuist.',
         ]);
     }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
+        return redirect('/')->with('success', 'Je bent succesvol uitgelogd.');
 
+    }
 }
