@@ -10,27 +10,132 @@
 </head>
 
 <body>
- @if (!request()->routeIs('login', 'register'))
-    <nav>
-        <a href="/">Home</a>
-        <a href="/diensten">Diensten</a>
-        <a href="/over-ons">Over ons</a>
-        <a href="/contact">Contact</a>
 
-        @guest
-            <a href="{{ route('login') }}">Inloggen</a>
-            <a href="{{ route('register') }}">Registreren</a>
-        @endguest
-        @auth 
-        <a href="/afsprqken">Mijn afspraken</a>
+    @if (!request()->routeIs('login', 'register'))
+<nav class="sticky top-0 z-50 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center h-20">
 
-          <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit">Uitloggen</button>
-    </form>
-@endauth
-    </nav>
-@endif
+            <a
+                href="/"
+                class="text-xl font-bold text-gray-900 shrink-0"
+            >
+                Nova Tandzorg
+            </a>
+
+            <div class="hidden md:flex items-center gap-5 ml-auto whitespace-nowrap">
+
+                <a href="/" class="text-gray-700 hover:text-teal-600">
+                    Home
+                </a>
+
+                <a href="/diensten" class="text-gray-700 hover:text-teal-600">
+                    Diensten
+                </a>
+
+                <a href="/over-ons" class="text-gray-700 hover:text-teal-600">
+                    Over ons
+                </a>
+
+                <a href="/contact" class="text-gray-700 hover:text-teal-600">
+                    Contact
+                </a>
+
+                @guest
+                    <a
+                        href="{{ route('login') }}"
+                        class="text-gray-700 hover:text-teal-600"
+                    >
+                        Inloggen
+                    </a>
+
+                    <a
+                        href="{{ route('register') }}"
+                        class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition"
+                    >
+                        Afspraak maken
+                    </a>
+                @endguest
+
+                @auth
+                    <a
+                        href="/afspraken"
+                        class="text-gray-700 hover:text-teal-600"
+                    >
+                        Mijn afspraken
+                    </a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <button
+                            type="submit"
+                            class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition"
+                        >
+                            Uitloggen
+                        </button>
+                    </form>
+                @endauth
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+    @endif
+
     @yield('content')
+<footer class="bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div>
+                <h2 class="text-xl font-bold mb-3">
+                    Tandarts Praktijk
+                </h2>
+
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Professionele en persoonlijke tandzorg voor een gezonde en stralende glimlach.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-4">
+                    Navigatie
+                </h3>
+
+                <div class="flex flex-col gap-2 text-sm">
+                    <a href="/" class="text-slate-400 hover:text-white transition">Home</a>
+                    <a href="/diensten" class="text-slate-400 hover:text-white transition">Diensten</a>
+                    <a href="/over-ons" class="text-slate-400 hover:text-white transition">Over ons</a>
+                    <a href="/contact" class="text-slate-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-4">
+                    Contact
+                </h3>
+
+                <div class="text-sm text-slate-400 space-y-2">
+                    <p>Rotterdamstraat 10</p>
+                    <p>3000 AA Rotterdam</p>
+                    <p>010 - 123 45 67</p>
+                    <p>info@tandartspraktijk.nl</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="border-t border-slate-700 mt-8 pt-6">
+            <p class="text-sm text-slate-500 text-center">
+                © 2026 Tandarts Praktijk. Alle rechten voorbehouden.
+            </p>
+        </div>
+
+    </div>
+</footer>
 </body>
 </html>

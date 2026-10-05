@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', function () {
     return 'Je bent ingelogd.';
 })->middleware('auth')->name('dashboard');
+Route::get('/diensten', [ServiceController::class, 'index'])->name('services.index');
