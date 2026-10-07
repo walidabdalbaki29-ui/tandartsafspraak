@@ -3,12 +3,11 @@
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('/login', [LoginController::class, 'create'])->name('login');
@@ -18,3 +17,5 @@ Route::get('/dashboard', function () {
     return 'Je bent ingelogd.';
 })->middleware('auth')->name('dashboard');
 Route::get('/diensten', [ServiceController::class, 'index'])->name('services.index');
+Route::get('/afspraak-maken', [AppointmentController::class, 'create'])->middleware('auth')->name('appointments.create');
+Route::post('/afspraak-maken', [AppointmentController::class, 'store'])->middleware('auth')->name('appointments.store');

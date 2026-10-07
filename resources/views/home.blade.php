@@ -165,134 +165,41 @@
             <div class="lg:col-span-3">
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                    @foreach ($services as $service)
 
-                    <!-- Card 1 -->
-                    <div class="bg-white border border-slate-200 rounded-xl p-3
-                                shadow-sm hover:shadow-md transition">
+    <div class="bg-white border border-slate-200 rounded-xl p-3
+                shadow-sm hover:shadow-md transition overflow-x-hidden width-full" >
 
-                        <div class="h-24 bg-teal-50 rounded-lg mb-3 flex items-center justify-center">
-                            <span class="text-teal-600 text-sm font-medium">
-                                Afbeelding
-                            </span>
-                        </div>
+        <div class="h-24 rounded-lg mb-3 overflow-hidden">
+            <img
+                src="{{ asset('images/' . $service->image) }}"
+                alt="{{ $service->name }}"
+                class="w-full h-full object-cover"
+            >
+        </div>
 
-                        <h3 class="font-bold text-slate-900 text-sm mb-2">
-                            Tandcontrole
-                        </h3>
+        <h3 class="font-bold text-slate-900 text-sm mb-2">
+            {{ $service->name }}
+        </h3>
 
-                        <p class="text-xs text-slate-500 mb-3">
-                            Preventieve controle voor een gezond gebit.
-                        </p>
+        <p class="text-xs text-slate-500 mb-3">
+            {{ $service->description }}
+        </p>
 
-                        <p class="text-sm font-semibold text-slate-900 mb-2">
-                            Vanaf € 45,-
-                        </p>
+        <p class="text-sm font-semibold text-slate-900 mb-2">
+            Vanaf € {{ number_format($service->price, 2, ',', '.') }}
+        </p>
 
-                        <a
-                            href="/diensten"
-                            class="text-teal-600 text-xs font-semibold hover:text-teal-700"
-                        >
-                            Meer info →
-                        </a>
+        <a
+            href="/diensten"
+            class="text-teal-600 text-xs font-semibold hover:text-teal-700"
+        >
+            Alle diensten →
+        </a>
 
-                    </div>
+    </div>
 
-
-                    <!-- Card 2 -->
-                    <div class="bg-white border border-slate-200 rounded-xl p-3
-                                shadow-sm hover:shadow-md transition">
-
-                        <div class="h-24 bg-teal-50 rounded-lg mb-3 flex items-center justify-center">
-                            <span class="text-teal-600 text-sm font-medium">
-                                Afbeelding
-                            </span>
-                        </div>
-
-                        <h3 class="font-bold text-slate-900 text-sm mb-2">
-                            Gebitsreiniging
-                        </h3>
-
-                        <p class="text-xs text-slate-500 mb-3">
-                            Een schoon en fris gebit.
-                        </p>
-
-                        <p class="text-sm font-semibold text-slate-900 mb-2">
-                            Vanaf € 65,-
-                        </p>
-
-                        <a
-                            href="/diensten"
-                            class="text-teal-600 text-xs font-semibold hover:text-teal-700"
-                        >
-                            Meer info →
-                        </a>
-
-                    </div>
-
-
-                    <!-- Card 3 -->
-                    <div class="bg-white border border-slate-200 rounded-xl p-3
-                                shadow-sm hover:shadow-md transition">
-
-                        <div class="h-24 bg-teal-50 rounded-lg mb-3 flex items-center justify-center">
-                            <span class="text-teal-600 text-sm font-medium">
-                                Afbeelding
-                            </span>
-                        </div>
-
-                        <h3 class="font-bold text-slate-900 text-sm mb-2">
-                            Tandvulling
-                        </h3>
-
-                        <p class="text-xs text-slate-500 mb-3">
-                            Snelle en duurzame oplossing.
-                        </p>
-
-                        <p class="text-sm font-semibold text-slate-900 mb-2">
-                            Vanaf € 75,-
-                        </p>
-
-                        <a
-                            href="/diensten"
-                            class="text-teal-600 text-xs font-semibold hover:text-teal-700"
-                        >
-                            Meer info →
-                        </a>
-
-                    </div>
-
-
-                    <!-- Card 4 -->
-                    <div class="bg-white border border-slate-200 rounded-xl p-3
-                                shadow-sm hover:shadow-md transition">
-
-                        <div class="h-24 bg-teal-50 rounded-lg mb-3 flex items-center justify-center">
-                            <span class="text-teal-600 text-sm font-medium">
-                                Afbeelding
-                            </span>
-                        </div>
-
-                        <h3 class="font-bold text-slate-900 text-sm mb-2">
-                            Wortelkanaalbehandeling
-                        </h3>
-
-                        <p class="text-xs text-slate-500 mb-3">
-                            Behandeling bij een ontstoken tand.
-                        </p>
-
-                        <p class="text-sm font-semibold text-slate-900 mb-2">
-                            Vanaf € 150,-
-                        </p>
-
-                        <a
-                            href="/diensten"
-                            class="text-teal-600 text-xs font-semibold hover:text-teal-700"
-                        >
-                            Meer info →
-                        </a>
-
-                    </div>
-
+@endforeach
                 </div>
 
             </div>
@@ -309,7 +216,11 @@
             <!-- Afbeelding -->
             <div class="h-72 md:h-96 bg-slate-100 rounded-2xl flex items-center justify-center">
                 <span class="text-slate-400">
-                    Afbeelding tandartspraktijk
+                    <img
+                        src="{{ asset('images/HOME-2.png') }}"
+                        alt="Over ons afbeelding"
+                        class="w-full h-full object-cover rounded-2xl"
+                    >
                 </span>
             </div>
 

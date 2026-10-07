@@ -65,7 +65,7 @@
             </div>
 
             <a
-                href="{{ route('login') }}"
+                href="{{ route('appointments.create', ['service' => $service->id]) }}"
                 class="block text-center bg-teal-600 text-white px-5 py-3 rounded-lg font-semibold hover:bg-teal-700 transition"
             >
                 Afspraak maken
