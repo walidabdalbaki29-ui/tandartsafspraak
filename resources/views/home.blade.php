@@ -289,7 +289,7 @@
 
             <!-- Button -->
             <a
-                href="{{ route('login') }}"
+                href="{{ route('services.index') }}"
                 class="bg-blue-600 text-white px-6 py-3 rounded-lg
                        font-semibold text-sm hover:bg-blue-700 transition
                        whitespace-nowrap"

@@ -74,4 +74,27 @@ class AppointmentController extends Controller
             'Je afspraak is succesvol aangevraagd.'
         );
     }
+
+    public function index()
+    {
+$appointments = Appointment::with('service')
+    ->where('user_id', Auth::id())
+    ->get();
+     return view("appointments.index", compact('appointments'));
+    }
+
+    public function cancel(Appointment $appointment)
+    {
+        if ($appointment->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $appointment->status = 'cancelled';
+        $appointment->save();
+
+        return redirect()->route('appointments.index')->with(
+            'success',
+            'Je afspraak is succesvol geannuleerd.'
+        );
+    }
 }

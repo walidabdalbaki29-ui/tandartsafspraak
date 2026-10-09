@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Models\User;
-use app\Models\Service;
 
 class Appointment extends Model
 {

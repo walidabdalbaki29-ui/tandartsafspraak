@@ -19,3 +19,7 @@ Route::get('/dashboard', function () {
 Route::get('/diensten', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/afspraak-maken', [AppointmentController::class, 'create'])->middleware('auth')->name('appointments.create');
 Route::post('/afspraak-maken', [AppointmentController::class, 'store'])->middleware('auth')->name('appointments.store');
+Route::get('/mijn-afspraken', [AppointmentController::class, 'index'])->middleware('auth')->name('appointments.index');
+Route::patch('/mijn-afspraken/{appointment}', [AppointmentController::class, 'cancel'])
+    ->middleware('auth')
+    ->name('appointments.cancel');

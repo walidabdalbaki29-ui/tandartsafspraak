@@ -59,7 +59,7 @@
 
                 @auth
                     <a
-                        href="/afspraken"
+                        href="/mijn-afspraken"
                         class="text-gray-700 hover:text-teal-600"
                     >
                         Mijn afspraken
